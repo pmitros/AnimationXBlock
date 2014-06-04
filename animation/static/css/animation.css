@@ -1,0 +1,9 @@
+/* CSS for AnimationXBlock */
+
+.animation_block .count {
+    font-weight: bold;
+}
+
+.animation_block p {
+    cursor: pointer;
+}
