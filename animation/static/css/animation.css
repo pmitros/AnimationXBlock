@@ -34,6 +34,14 @@ Above is useful for debugging
     
 }
 
+.ui-slider-labels {
+    top:-2px;
+}
+
+.ui-slider-labels-ticks {
+    height:14px;
+}
+
 .ui-widget-content .ui-state-default,
 .animation_slider
 .ui-widget-header .ui-state-default, .animation_slider {
