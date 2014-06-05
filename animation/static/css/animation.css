@@ -11,7 +11,7 @@ Above is useful for debugging
     border-width:1px;
     border-style:solid;
     border-color:rgba(0,0,0,0.1);
-    border-radius: 16 16 16 16;
+    border-radius: 16px 16px 16px 16px;
     background:rgba(255,255,255,1);
     display:flex;
 }
@@ -23,7 +23,7 @@ Above is useful for debugging
     border-width:1px; 
     border-style:solid; 
     border-color:rgba(0,0,0,0.1);
-    border-radius: 16 16 16 16;
+    border-radius: 16px 16px 16px 16px;
     width:100%;
 }
 
@@ -63,7 +63,7 @@ Above is useful for debugging
     border-width:1px; 
     border-style:solid; 
     border-color:rgba(0,0,0,0.05);
-    border-radius:5px;
+    border-radius:8px;
     padding:10px;
     text-align:center;
     margin:10px;
