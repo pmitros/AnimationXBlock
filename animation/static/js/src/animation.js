@@ -16,7 +16,7 @@ function AnimationXBlock(runtime, element) {
 	// TODO: Should we do this less often for lower load? 
 	// (It's okay right now, but less would be cleaner) 
 	function update_animation() {
-	    position = $(".animation_slider").slider("value")
+	    position = $(".animation_slider", element).labeledslider("value")
 	    $(".animation_image").attr("src", animation[position].src);
 	    $(".animation_text").html(animation[position].desc);
 	    if (position > max_position) { max_position = position; }
@@ -32,7 +32,7 @@ function AnimationXBlock(runtime, element) {
 	}
 
 	// Initialize slider. On any change, update the state
-	$( ".animation_slider", element ).slider({
+	$( ".animation_slider", element ).labeledslider({
 	    value: position, 
 	    min: 0, 
 	    max: animation.length-1, 
@@ -45,10 +45,26 @@ function AnimationXBlock(runtime, element) {
 	// Go to current position in animation
 	update_animation();
 
+	$(".animation_left", element).click(function(){
+	    new_position = position-1;
+	    if(new_position<0) {
+		new_position = 0;
+	    }
+	    $(".animation_slider", element).labeledslider("value", new_position);
+	});
+
+	$(".animation_right", element).click(function(){
+	    new_position = position + 1;
+	    if(new_position > animation.length - 1) {
+		new_position = animation.length - 1;
+	    }
+	    $(".animation_slider", element).labeledslider("value", new_position);
+	});
+
 	// Preload images. I'm not sure this works. Internet 
 	// said it did, but I think it might not, just from 
 	// performance
-	for(i=0; i<position.length; i++){
+	for(i=0; i<animation.length; i++){
 	    animation[position]["image"] = new Image();
 	    animation[position]["image"].src = animation[position].src;
 	}

@@ -52,7 +52,6 @@ class AnimationXBlock(XBlock):
 
     @XBlock.json_handler
     def update_position(self, data, suffix):
-        print data
         if 'position' in data:
             self.position = data['position']
         if 'max_position' in data:
@@ -82,7 +81,9 @@ class AnimationXBlock(XBlock):
                                     max_position = self.max_position))
 #        frag.add_javascript_url("//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
         frag.add_css_url("//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css")
+        frag.add_css(self.resource_string("static/css/jquery.ui.labeledslider.css"))
         frag.add_javascript_url("//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js")
+        frag.add_javascript(self.resource_string("static/js/src/jquery.ui.labeledslider.js"))
         frag.add_css(self.resource_string("static/css/animation.css"))
         frag.add_javascript(self.resource_string("static/js/src/animation.js"))
         frag.initialize_js('AnimationXBlock')
@@ -125,7 +126,7 @@ class AnimationXBlock(XBlock):
         return [
             ("AnimationXBlock",
              """<vertical_demo>
-                <animation width="460" height="384" textheight="200">
+                <animation width="460" height="384" textheight="100">
 http://upload.wikimedia.org/wikipedia/commons/e/e8/Pin_tumbler_no_key.svg
 Without a key in the lock, the driver pins (blue) are pushed downwards, preventing the plug (yellow) from rotating.
 http://upload.wikimedia.org/wikipedia/commons/5/54/Pin_tumbler_bad_key.svg

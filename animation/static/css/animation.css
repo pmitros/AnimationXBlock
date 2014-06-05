@@ -1,12 +1,29 @@
 /* CSS for AnimationXBlock */
+/*div {
+    border-width:1px;
+    border-style:solid;
+    border-color:rgba(0,0,0,0.1);
+}
+Above is useful for debugging
+*/ 
+
+.animation_header {
+    border-width:1px;
+    border-style:solid;
+    border-color:rgba(0,0,0,0.1);
+    border-radius: 16 16 16 16;
+    background:rgba(255,255,255,1);
+    display:flex;
+}
+
 .animation_wrapper {  // Whole XBlock. Gray background
     display:block; 
-    background:rgb(200, 200, 200); // TODO: edX gray
-    padding:20px !important;
+    background:rgba(0,0,0,0.01);
+    /*background:rgb(200, 200, 200); // TODO: edX gray*/
     border-width:1px; 
     border-style:solid; 
-    border-color:black;
-    border-radius:5px;
+    border-color:rgba(0,0,0,0.1);
+    border-radius: 16 16 16 16;
     width:100%;
 }
 
@@ -14,6 +31,7 @@
     display:block; 
     width:100%; 
     padding:10px;
+    
 }
 
 .ui-widget-content .ui-state-default,
@@ -31,13 +49,23 @@
 	color: #222222;
 }
 
+.animation_flex_column {
+    display:flex; 
+    flex-direction: column;
+}
+
+.animation_flex_row {
+    display:flex; 
+    flex-direction: column;
+}
+
 .animation_text {
     border-width:1px; 
     border-style:solid; 
-    border-color:black;
+    border-color:rgba(0,0,0,0.05);
     border-radius:5px;
     padding:10px;
     text-align:center;
     margin:10px;
-    background:rgb(255, 255, 255); 
+    background:rgba(255,255,255,1);
 }
