@@ -45,7 +45,9 @@ function AnimationXBlock(runtime, element) {
 	// Go to current position in animation
 	update_animation();
 
-	// Preload images
+	// Preload images. I'm not sure this works. Internet 
+	// said it did, but I think it might not, just from 
+	// performance
 	for(i=0; i<position.length; i++){
 	    animation[position]["image"] = new Image();
 	    animation[position]["image"].src = animation[position].src;
