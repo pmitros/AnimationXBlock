@@ -1,9 +1,40 @@
 /* CSS for AnimationXBlock */
-
-.animation_block .count {
-    font-weight: bold;
+.animation_wrapper { 
+    display:block; 
+    background:rgb(200, 200, 200); // TODO: edX gray
+    padding:20px !important;
+    border-width:1px; 
+    border-style:solid; 
+    border-color:black;
+    border-radius:5px;
 }
 
-.animation_block p {
-    cursor: pointer;
+.animation_block {
+    display:inline-block;
+}
+
+.animation_text {
+    border-width:1px; 
+    border-style:solid; 
+    border-color:black;
+    border-radius:5px;
+    padding:10px;
+    text-align:center;
+    margin:10px;
+    background:rgb(255, 255, 255); 
+}
+
+.ui-widget-content .ui-state-default,
+.animation_slider
+.ui-widget-header .ui-state-default, .animation_slider {
+	border: 1px solid #222222;
+	background: #e6e6e6 linear-gradient(rgb(109, 204, 241), rgb(56, 168, 229));
+	font-weight: normal;
+	color: #555555;
+}
+
+.ui-widget-content, .animation_slider  {
+	border: 1px solid #222222;
+	background: #23c400 linear-gradient(90deg, rgb(109, 204, 241), rgb(202, 232, 202));
+	color: #222222;
 }

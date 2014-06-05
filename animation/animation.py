@@ -8,7 +8,6 @@ from xblock.core import XBlock
 from xblock.fields import Scope, Integer, List
 from xblock.fragment import Fragment
 
-
 class AnimationXBlock(XBlock):
     """
     TO-DO: document what your XBlock does.
@@ -39,6 +38,27 @@ class AnimationXBlock(XBlock):
         help="Width"
         )
 
+    position = Integer(
+        scope=Scope.user_state,
+        help="Current position",
+        default=0
+    )
+
+    max_position = Integer(
+        scope=Scope.user_state,
+        help="Maximum position (for progress)",
+        default=0
+    )
+
+    @XBlock.json_handler
+    def update_position(self, data, suffix):
+        print data
+        if 'position' in data:
+            self.position = data['position']
+        if 'max_position' in data:
+            self.max_position = data['max_position']
+        return {"status":"success"}
+
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
         data = pkg_resources.resource_string(__name__, path)
@@ -51,8 +71,14 @@ class AnimationXBlock(XBlock):
         when viewing courses.
         """
         html = self.resource_string("static/html/animation.html")
-        frag = Fragment(html.format(height = self.height, textheight = self.textheight, width=self.width, animation = json.dumps(self.animation)))
-        frag.add_javascript_url("//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+        frag = Fragment(html.format(height = self.height, 
+                                    textheight = self.textheight, 
+                                    width=self.width, 
+                                    inner_width=self.width-20, 
+                                    animation = json.dumps(self.animation),
+                                    position = self.position, 
+                                    max_position = self.max_position))
+#        frag.add_javascript_url("//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
         frag.add_css_url("//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css")
         frag.add_javascript_url("//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js")
         frag.add_css(self.resource_string("static/css/animation.css"))

@@ -1,11 +1,18 @@
-<div style="display:inline">
-<div class="animation_block" style="height:{height}; width:{width}; display:inline-block;">
-  <script type="data/animation" class="animation_source">
-    {animation}
-  </script>
-  <img class="animation_image" src="http://www.learningandteaching.info/learning/graphics/klb4kind.gif" height={height} width={width}>
-  <div class="animation_text" style="height:{textheight}">
+<div class="animation_wrapper" style="width:{width};">
+  <div class="animation_block" style="width:{width};">
+    <script type="data/animation" class="animation_source">
+      {{"position":{position}, 
+        "animation":{animation}, 
+        "max_position":{max_position}
+      }}
+    </script>
+    <div style="display:block; width:100%; padding:10px;">
+      <div class="animation_slider" style="width:{inner_width}; "></div>
+    </div>
+    <img class="animation_image" src="" height={height} width={width}>
+    <div class="animation_text_wrapper" style="height:{textheight}">
+      <div class="animation_text">
+      </div>
+    </div>
   </div>
-  <div class="animation_slider"></div>
-</div>
 </div>
