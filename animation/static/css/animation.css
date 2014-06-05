@@ -7,6 +7,7 @@
     border-style:solid; 
     border-color:black;
     border-radius:5px;
+    width:100%;
 }
 
 .animation_slider_wrapper { // Div around slider. Give a bit of a border
