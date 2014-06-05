@@ -20,9 +20,7 @@ function AnimationXBlock(runtime, element) {
 	    $(".animation_image").attr("src", animation[position].src);
 	    $(".animation_text").html(animation[position].desc);
 	    if (position > max_position) { max_position = position; }
-	    console.log("Update");
 	    if (max_position == animation.length-1) {
-		console.log("Done");
 		$('.animation_wrapper', element).addClass("animation_done");
 	    }
 	    $.ajax({
