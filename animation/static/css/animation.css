@@ -35,11 +35,11 @@ Above is useful for debugging
 }
 
 .ui-slider-labels {
-    top:-2px;
+    top:-2px !important;
 }
 
 .ui-slider-labels-ticks {
-    height:14px;
+    height:14px !important;
 }
 
 .ui-widget-content .ui-state-default,
