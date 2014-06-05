@@ -5,7 +5,7 @@ import json
 import pkg_resources
 
 from xblock.core import XBlock
-from xblock.fields import Scope, Integer, List
+from xblock.fields import Scope, Integer, List, String, DateTime, Float
 from xblock.fragment import Fragment
 
 class AnimationXBlock(XBlock):
@@ -57,6 +57,8 @@ class AnimationXBlock(XBlock):
             self.position = data['position']
         if 'max_position' in data:
             self.max_position = data['max_position']
+            grade = self.max_position/float(len(self.animation))
+            self.runtime.publish(self, 'grade', {'value':grade, 'max_value': 1})
         return {"status":"success"}
 
     def resource_string(self, path):
@@ -115,7 +117,6 @@ class AnimationXBlock(XBlock):
 
         return block
 
-
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.
     @staticmethod
@@ -137,3 +138,41 @@ With the gaps between the pins aligned with the shear line, the plug (yellow) ca
                 </vertical_demo>
              """),
         ]
+    ## Everything below is stolen from https://github.com/edx/edx-ora2/blob/master/apps/openassessment/xblock/lms_mixin.py
+    ## It's needed to keep the LMS+Studio happy. 
+    ## It should be included as a mixin. 
+
+    display_name = String(
+        default="Completion", scope=Scope.settings,
+        help="Display name"
+    )
+
+    start = DateTime(
+        default=None, scope=Scope.settings,
+        help="ISO-8601 formatted string representing the start date of this assignment. We ignore this."
+    )
+
+    due = DateTime(
+        default=None, scope=Scope.settings,
+        help="ISO-8601 formatted string representing the due date of this assignment. We ignore this."
+    )
+
+    weight = Float(
+        display_name="Problem Weight",
+        help=("Defines the number of points each problem is worth. "
+              "If the value is not set, the problem is worth the sum of the "
+              "option point values."),
+        values={"min": 0, "step": .1},
+        scope=Scope.settings
+    )
+
+    def has_dynamic_children(self):
+        """Do we dynamically determine our children? No, we don't have any.
+        """
+        return False
+
+    def max_score(self):
+        """The maximum raw score of our problem.
+        """
+        return 1
+
