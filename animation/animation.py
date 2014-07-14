@@ -142,6 +142,11 @@ With the gaps between the pins aligned with the shear line, the plug (yellow) ca
     ## Everything below is stolen from https://github.com/edx/edx-ora2/blob/master/apps/openassessment/xblock/lms_mixin.py
     ## It's needed to keep the LMS+Studio happy. 
     ## It should be included as a mixin. 
+    ## 
+    ## The only LMS functionality we need and use is grading. Cale
+    ## believes most of this is unnecessary, but I did not want to do
+    ## a binary search for what is and is not necessary, since this is
+    ## effectively a TODO. 
 
     display_name = String(
         default="Completion", scope=Scope.settings,
